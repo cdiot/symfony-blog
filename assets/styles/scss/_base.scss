@@ -1,0 +1,48 @@
+/*
+Author : Chris ;
+Theme : Pure CSS ;
+Description : Basic elements ;
+Tags : CSS, Symfony ;
+*/
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+} 
+
+body {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--white);
+  color: var(--black);
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+label {
+  display: inline-block;
+}
+
+button, select {
+  text-transform: none;
+}
+
+fieldset {
+  border: 0;
+}
+
+label, legend {
+  margin-bottom: 0.5rem;
+}
