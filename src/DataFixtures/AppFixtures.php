@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Article;
 use App\Entity\ArticleCategory;
 use App\Entity\Media;
 use App\Entity\User;
@@ -19,6 +20,8 @@ class AppFixtures extends Fixture
 
     private array $articleCategories  = [];
 
+    private array $articles  = [];
+
     public function __construct(private UserPasswordHasherInterface $passwordHasher)
     {
     }
@@ -28,6 +31,7 @@ class AppFixtures extends Fixture
         $this->loadUsers($manager);
         $this->loadMedias($manager);
         $this->loadArticleCategories($manager);
+        $this->loadArticles($manager);
     }
 
     private function loadUsers(ObjectManager $manager): void
@@ -74,6 +78,27 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
+    private function loadArticles(ObjectManager $manager): void
+    {
+        foreach ($this->getArticleData() as [$user, $createdAt, $updatedAt, $title, $slug, $leadText, $description, $featuredImage, $category]) {
+            $article = new Article();
+            $article->setUser($this->users[$user]);
+            $article->setCreatedAt($createdAt);
+            $article->setUpdatedAt($updatedAt);
+            $article->setTitle($title);
+            $article->setSlug($slug);
+            $article->setLeadText($leadText);
+            $article->setDescription($description);
+            $article->setFeaturedImage($this->medias[$featuredImage]);
+            $article->addCategory($this->articleCategories[$category]);
+            $article->setIsPublish(true);
+            $article->setIsPopular(true);
+            $manager->persist($article);
+            $this->articles[] = $article;
+        }
+        $manager->flush();
+    }
+
     private function getUserData(): array
     {
         return [
@@ -103,6 +128,24 @@ class AppFixtures extends Fixture
             ['Japon', 'japon'],
             ['Thailande', 'thailande'],
             ['Corée du sud', 'coree-du-sud'],
+        ];
+    }
+
+    private function getArticleData(): array
+    {
+        return [
+            // $articleData = [$user, $createdAt, $updatedAt, $title, $slug, $leadText, $description, $featuredImage, $category];
+            [
+                0,
+                new DateTimeImmutable(),
+                new DateTime(),
+                'Mon super premier article',
+                'mon-super-premier-article',
+                'Le texte mise en avant de mon super premier article.',
+                'La description très détaille de mon super premier article.',
+                0,
+                0,
+            ],
         ];
     }
 }
