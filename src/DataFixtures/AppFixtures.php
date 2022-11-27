@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\ArticleCategory;
 use App\Entity\Media;
 use App\Entity\User;
 use DateTime;
@@ -16,6 +17,8 @@ class AppFixtures extends Fixture
 
     private array $medias  = [];
 
+    private array $articleCategories  = [];
+
     public function __construct(private UserPasswordHasherInterface $passwordHasher)
     {
     }
@@ -24,6 +27,7 @@ class AppFixtures extends Fixture
     {
         $this->loadUsers($manager);
         $this->loadMedias($manager);
+        $this->loadArticleCategories($manager);
     }
 
     private function loadUsers(ObjectManager $manager): void
@@ -58,6 +62,18 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
+    private function loadArticleCategories(ObjectManager $manager): void
+    {
+        foreach ($this->getArticleCategoryData() as [$name, $slug]) {
+            $articleCategory = new ArticleCategory();
+            $articleCategory->setName($name);
+            $articleCategory->setSlug($slug);
+            $manager->persist($articleCategory);
+            $this->articleCategories[] = $articleCategory;
+        }
+        $manager->flush();
+    }
+
     private function getUserData(): array
     {
         return [
@@ -77,6 +93,16 @@ class AppFixtures extends Fixture
                 new DateTimeImmutable(),
                 new DateTime(),
             ],
+        ];
+    }
+
+    private function getArticleCategoryData(): array
+    {
+        return [
+            // $articleCategoryData = [$name, $slug];
+            ['Japon', 'japon'],
+            ['Thailande', 'thailande'],
+            ['Corée du sud', 'coree-du-sud'],
         ];
     }
 }
