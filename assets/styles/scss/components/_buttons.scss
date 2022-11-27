@@ -1,0 +1,30 @@
+/*
+Author : Chris ;
+Theme : Pure CSS ;
+Description : Buttons ;
+Tags : CSS ;
+*/
+
+.button {
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 0.063rem solid transparent;
+    border-radius: 0.188rem;
+    color: var(--black);
+    background-color: transparent;
+}
+
+.button-action {
+    color: var(--white);
+    background-color: var(--shade-red);
+    border: 0.063rem solid var(--shade-red);
+}
+
+.button-action:active,
+.button-action:focus,
+.button-action:hover {
+    background: #fa7774;
+    border-color: #fa7774;
+}

@@ -2,22 +2,19 @@
 Author : Chris ;
 Theme : Pure CSS ;
 Description :  Main file ;
-Tags : CSS, Symfony ;
+Tags : CSS ;
 */
 
-@import "_base.scss";
-@import "_layout.scss";
-@import "_state.scss";
-@import "_template.scss";
-@import "module/_alert.scss";
-@import "module/_button.scss";
-@import "module/_form.scss";
-@import "module/_grid.scss";
-@import "module/_herobanner.scss";
-@import "module/_icon.scss";
-@import "module/_navigation.scss";
-@import "module/_pagination.scss";
-@import "module/_post.scss";
-@import "module/_spacing.scss";
-@import "module/_typography.scss";
-@import "module/_utility.scss";
+@import "base/_basics.scss";
+@import "base/_typography.scss";
+@import "components/_alerts.scss";
+@import "components/_buttons.scss";
+@import "components/_form.scss";
+@import "components/_icon.scss";
+@import "components/_pagination.scss";
+@import "components/_post.scss";
+@import "components/_utilities.scss";
+@import "layout/_footer.scss";
+@import "layout/_grid.scss";
+@import "layout/_navigation.scss";
+@import "utils/_variables.scss";

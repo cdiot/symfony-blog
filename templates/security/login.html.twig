@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+	<title>Connecte toi - ryokosan.com, Blog voyage d'un digital nomad</title>
+	<meta name="description" content="Vous aimez le contenu de ce blog, connectez vous pour partager votre avis en laissant un commentaire sur un article."/>
+	<link rel="canonical" href="https://www.ryokosan.com{{ path('app_login') }}">
+	<meta property="og:title" content="Connecte toi - ryokosan.com, Blog voyage d'un digital nomad"/>
+	<meta property="og:url" content="https://www.ryokosan.com{{ path('app_login') }}">
+	<meta property="og:site_name" content="Ryokosan">
+	<meta property="og:type" content="siteweb"/>
+	<meta property="og:description" content="Vous aimez le contenu de ce blog, connectez vous pour partager votre avis en laissant un commentaire sur un article."/>
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<div class="row">
+			<div class="column-twelve column-desktop-three">
+				<h2 class="headline">
+					Connecte toi
+				</h2>
+				<p class="lead">Hé! Content de te revoir.</p>
+				<form method="post">
+					{% if error %}
+						<div class="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+					{% if app.user %}
+						<div class="alert">
+							Tu es déjà connecté en tant que
+							{{ app.user.userIdentifier }},
+							<a href="{{ path('app_logout') }}">Se déconnecter</a>.
+						</div>
+					{% endif %}
+					<div class="form-group">
+						<label for="inputEmail">Email</label>
+						<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-input" autocomplete="email" required autofocus>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword">Mot de passe</label>
+						<input type="password" name="password" id="inputPassword" class="form-input" autocomplete="current-password" required>
+					</div>
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+					<p class="form-group">
+						<a href="#" class="form-link">Mot de passe oublié ?</a>
+					</p>
+					<button class="button button-action form-group" type="submit">
+						Connexion
+					</button>
+					<p class="form-group text-align-center">
+						Tu n'as pas de compte ?
+						<a href="#" class="form-link">S'inscrire !</a>
+					</p>
+				</form>
+			</div>
+		</div>
+	</section>
+{% endblock %}
