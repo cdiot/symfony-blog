@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+	<title>S'inscrire - ryokosan.com, Blog voyage d'un digital nomad</title>
+	<link rel="canonical" href="https://www.ryokosan.com{{ path('app_register') }}">
+	<meta name="description" content="Vous aimez le contenu de ce blog, inscrivez vous pour partager votre avis en laissant un commentaire sur un article."/>
+	<meta property="og:title" content="S'inscrire - ryokosan.com, Blog voyage d'un digital nomad"/>
+	<meta property="og:url" content="https://www.ryokosan.com{{ path('app_register') }}">
+	<meta property="og:site_name" content="Ryokosan">
+	<meta property="og:type" content="siteweb"/>
+	<meta property="og:description" content="Vous aimez le contenu de ce blog, inscrivez vous pour partager votre avis en laissant un commentaire sur un article."/>
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<div class="row">
+			<div class="column-twelve column-desktop-three">
+				<h1 class="headline">S'inscrire</h1>
+				<p class="lead u-text-align-center">Commençons!</p>
+				{{ form_start(registrationForm) }}
+				<div class="form-group">
+					{{ form_row(registrationForm.username) }}
+				</div>
+				<div class="form-group">
+					{{ form_row(registrationForm.email) }}
+				</div>
+				<div class="form-group">
+					{{ form_row(registrationForm.plainPassword) }}
+				</div>
+				<div class="form-group form-checkbox">
+					{{ form_row(registrationForm.agreeTerms) }}
+				</div>
+				<button class="button button-action form-group" type="submit">
+					S'inscrire
+				</button>
+				{{ form_end(registrationForm) }}
+				<p class="form-group text-align-center">
+					Tu as déjà un compte ?
+					<a href="{{ path('app_login') }}" class="form-link">Connexion !</a>
+				</p>
+			</div>
+		</div>
+	</section>
+{% endblock %}
