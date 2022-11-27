@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+	<title>Réinitialise ton mot de passe - ryokosan.com, Blog voyage d'un digital nomad</title>
+	<meta name="description" content="Si tu as oublié ton mot de passe tu te trouves sur la bonne page pour le réinitialiser."/>
+	<link rel="canonical" href="https://www.ryokosan.com{{ path('app_forgot_password_request') }}">
+	<meta property="og:title" content="Réinitialise ton mot de passe - ryokosan.com, Blog voyage d'un digital nomad"/>
+	<meta property="og:url" content="https://www.ryokosan.com{{ path('app_forgot_password_request') }}">
+	<meta property="og:site_name" content="Ryokosan">
+	<meta property="og:type" content="siteweb"/>
+	<meta property="og:description" content="Si tu as oublié ton mot de passe tu te trouves sur la bonne page pour le réinitialiser."/>
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<div class="row">
+			<div class="column-twelve column-desktop-three">
+				{% for flash_error in app.flashes('reset_password_error') %}
+					<div role="alert">{{ flash_error }}</div>
+				{% endfor %}
+				<h1 class="headline">
+					Mot de passe oublié ?
+				</h1>
+				<p class="lead">
+					Entre ton adresse e-mail, tu recevras un lien te permettant de définir
+					un nouveau mot de passe (à ne pas oublier cette fois) !
+				</p>
+				{{ form_start(requestForm) }}
+				<div class="form-group">
+					{{ form_row(requestForm.email) }}
+				</div>
+				<button class="button button-action form-group" type="submit">
+					Envoyer un lien de rénitialisation
+				</button>
+				{{ form_end(requestForm) }}
+			</div>
+		</div>
+	</section>
+{% endblock %}

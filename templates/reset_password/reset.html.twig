@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+	<title>Réinitialise ton mot de passe - ryokosan.com, Blog voyage d'un digital nomad</title>
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<div class="row">
+			<div class="column-twelve column-desktop-three">
+				<h1 class="headline">Réinitialise ton mot de passe</h1>
+				<p class="lead">
+					Entre ton nouveau mot de passe fort et simple à retenir (à ne pas oublier cette fois) !
+				</p>
+				{{ form_start(resetForm) }}
+				<div class="form-group">
+					{{ form_row(resetForm.plainPassword) }}
+				</div>
+				<button class="button button-action form-group" type="submit">Réinitialise ton mot de passe</button>
+				{{ form_end(resetForm) }}
+			</div>
+		</div>
+	</section>
+{% endblock %}
