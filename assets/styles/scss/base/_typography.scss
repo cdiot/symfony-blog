@@ -1,0 +1,29 @@
+/*
+Author : Chris ;
+Theme : Pure CSS ;
+Description : Module typography ;
+Tags : CSS ;
+*/
+
+.headline {
+    font-size: 1.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.headline::after {
+    background: var(--shade-red);
+    content: "";
+    height: 0.188rem;
+    width: 4.375rem;
+    display: block;
+    margin: 0.625rem auto 1.25rem auto;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+}
