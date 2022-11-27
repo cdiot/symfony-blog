@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Media;
 use App\Entity\User;
 use DateTime;
 use DateTimeImmutable;
@@ -13,6 +14,8 @@ class AppFixtures extends Fixture
 {
     private array $users = [];
 
+    private array $medias  = [];
+
     public function __construct(private UserPasswordHasherInterface $passwordHasher)
     {
     }
@@ -20,6 +23,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $this->loadUsers($manager);
+        $this->loadMedias($manager);
     }
 
     private function loadUsers(ObjectManager $manager): void
@@ -39,11 +43,40 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
+    private function loadMedias(ObjectManager $manager): void
+    {
+        foreach ($this->getMediaData() as [$name, $filename, $altText, $createdAt, $updatedAt]) {
+            $media = new Media();
+            $media->setName($name);
+            $media->setFilename($filename);
+            $media->setAltText($altText);
+            $media->setCreatedAt($createdAt);
+            $media->setUpdatedAt($updatedAt);
+            $manager->persist($media);
+            $this->medias[] = $media;
+        }
+        $manager->flush();
+    }
+
     private function getUserData(): array
     {
         return [
             // $userData = [$password, $email, $roles, $username];
             ['123456', 'fry@gmail.com', 'ROLE_ADMIN', 'Fry'],
+        ];
+    }
+
+    private function getMediaData(): array
+    {
+        return [
+            // $mediaData = [$name, $filename, $altText, $createdAt, $updatedAt];
+            [
+                'seoul_door_in_night.jpg',
+                'seoul_door_in_night.jpg',
+                'Séoul une des huit ancienne porte vue de nuit',
+                new DateTimeImmutable(),
+                new DateTime(),
+            ],
         ];
     }
 }
