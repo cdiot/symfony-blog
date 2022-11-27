@@ -13,7 +13,7 @@ class SecurityControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/connexion');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Connecte toi');
+        $this->assertSelectorTextContains('h1', 'CONNECTE TOI');
     }
 
     public function testVisitingWhileLoggedIn()
