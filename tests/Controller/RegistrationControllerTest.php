@@ -13,7 +13,7 @@ class RegistrationControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/inscription');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'S\'INSCRIRE');
+        $this->assertSelectorTextContains('h1', 'S\'inscrire');
     }
 
     public function testShouldSubmitRegisterForm()
