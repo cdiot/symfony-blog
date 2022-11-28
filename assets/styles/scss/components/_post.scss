@@ -4,3 +4,81 @@ Theme : Pure CSS ;
 Description : Post ;
 Tags : CSS ;
 */
+
+.post {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.188rem;
+    background: var(--white);
+    color: var(--black);
+    box-shadow: 0px 1px 2px rgb(0 0 0 / 15%);
+    margin-left: 0.625rem;
+    margin-right: 0.625rem;
+    margin-bottom: 1.875rem;
+}
+
+.post-content {
+    padding: 0.938rem;
+}
+
+.post-featured-image {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 15px;
+}
+
+.post-tags {
+    font-size: 0.938rem;
+    font-weight: 400;
+    border-radius: 3px;
+    background-color: var(--shade-red);
+    color: var(--white);
+    padding: 3px 10px;
+}
+
+.post-tags a:hover {
+    color: var(--shade-white);
+}
+
+.post-title {
+    font-size: 1.375rem;
+    font-weight: 500;
+    padding: 5px 0 0;
+}
+
+.post-title a:hover {
+    color: var(--shade-red);
+}
+
+.post-meta {
+    font-size: 0.938rem;
+    font-weight: 400;
+    color: var(--shade-black);
+    padding-bottom: 20px;
+}
+
+.post-big-title {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0;
+    padding: 5px 0 0;
+}
+
+.post-text {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 15px;
+}
+
+.post-options span {
+    float: right;
+}
+
+.post-options a {
+    color: var(--black);
+}
+
+.post-options a:hover {
+    color: var(--shade-red);
+}

@@ -1,0 +1,21 @@
+<div class="column-twelve column-desktop-four">
+	<article class="post">
+		<a href="{{ path('article_show', { 'slug': article.slug }) }}">
+			<img class="card-image-top" src="/build/images/{{ article.featuredImage.filename }}" alt="{{ article.featuredImage.altText }}" loading="lazy" width="390" height="186"/>
+		</a>
+		<div class="post-content">
+			<span class="post-tags">{{ article.categories|categoriesToString|raw }}</span>
+			<h3 class="post-title">
+				<a href="{{ path('article_show', { 'slug': article.slug }) }}">
+					{{ article.title }}
+				</a>
+			</h3>
+			<p class="post-meta">Par
+				{{ article.user.username }}
+				le
+				{{ article.createdAt|date('d M Y') }}
+			</p>
+			<p>{{ article.leadText }}</p>
+		</div>
+	</article>
+</div>

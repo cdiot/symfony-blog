@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+	<title>{{ article.title }}</title>
+	<link rel="canonical" href="https://www.ryokosan.com{{ path('article_show', { 'slug': article.slug }) }}">
+	<meta name="description" content="{{ article.leadText }}"/>
+	<meta property="og:title" content="{{ article.title }}"/>
+	<meta property="og:url" content="https://www.ryokosan.com{{ path('article_show', { 'slug': article.slug }) }}">
+	<meta property="og:site_name" content="Ryokosan">
+	<meta property="og:type" content="siteweb"/>
+	<meta property="og:image" content="https://www.ryokosan.com/build/images/{{ article.featuredImage.filename }}"/>
+	<meta property="og:description" content="{{ article.leadText }}"/>
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<div class="row">
+			<div class="column-twelve column-desktop-eight">
+				<article class="post">
+					<img class="post-featured-image" src="/build/images/{{ article.featuredImage.filename }}" alt="{{ article.featuredImage.altText }}" loading="lazy" width="800" height="382"/>
+					<div class="post-content">
+						<span class="post-tags">{{ article.categories|categoriesToString|raw }}</span>
+						<h1 class="post-big-title">{{ article.title }}</h1>
+						<p class="post-meta">
+							Par
+							{{ article.user.username }}
+							le
+							{{ article.createdAt|date('d M Y') }}
+						</p>
+						<p class="post-text">
+							{{ article.leadText }}
+						</p>
+						<div class="post-text">
+							{{ article.description }}
+						</div>
+						<div class="post-options">
+							<span>
+								<a href="#">
+									Signaler un problème
+								</a>
+							</span>
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+{% endblock %}
