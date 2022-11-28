@@ -1,11 +1,6 @@
 {% for article in articles %}
 	{% if article.isPublish == true is defined %}
 		{% include 'article/_item.html.twig' with { article } %}
-		{% include 'article/_item.html.twig' with { article } %}
-		{% include 'article/_item.html.twig' with { article } %}
-		{% include 'article/_item.html.twig' with { article } %}
-		{% include 'article/_item.html.twig' with { article } %}
-		{% include 'article/_item.html.twig' with { article } %}
 	{% else %}
 		<p>Aucun article n'a été trouvé...</p>
 	{% endif %}

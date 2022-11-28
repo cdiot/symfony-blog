@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+	<title>Catégorie
+		{{ category.name }}
+		sur ryokosan.com, Blog voyage d'un digital nomad</title>
+	<link rel="canonical" href="https://www.ryokosan.com{{ path('article_list') }}">
+	<meta name="description" content="Découvrez mes coups de cœur, mes bons plans, mes imprévus et mes déceptions lors de mes voyage à travers mes articles."/>
+	<meta property="og:title" content="Toutes les articles sur ryokosan.com, Blog voyage d'un digital nomad"/>
+	<meta property="og:url" content="https://www.ryokosan.com{{ path('article_list') }}">
+	<meta property="og:site_name" content="Ryokosan">
+	<meta property="og:type" content="siteweb"/>
+	<meta property="og:description" content="Découvrez mes coups de cœur, mes bons plans, mes imprévus et mes déceptions lors de mes voyage à travers mes articles."/>
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<div class="row">
+			<div class="column-twelve">
+				<h1 class="headline">
+					Catégorie
+					{{ category.name }}
+				</h1>
+				<p class="lead">Consulte régulièrement cette page pour te tenir au courant des dernières articles ajoutées.</p>
+				<br><br>
+			</div>
+			{% include 'article/_list.html.twig' with { articles: articles } %}
+		</div>
+	</section>
+{% endblock %}
