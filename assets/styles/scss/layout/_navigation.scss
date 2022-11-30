@@ -2,5 +2,193 @@
 Author : Chris ;
 Theme : Pure CSS ;
 Description : Navigation ;
-Tags : CSS, Symfony ;
+Tags : CSS ;
 */
+
+.navigation {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: var(--white);
+    z-index: 1;
+}
+
+.navigation-container {
+    max-width: 75rem;
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+    padding: 0.625rem;
+}
+
+.navigation-logo {
+    order: 2;
+    margin: 0 auto;
+}
+
+.navigation-logo span {
+    display: block;
+    color: var(--black);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.navigation-logo svg {
+    display: none;
+}
+
+.navigation-toggler {
+    display: none;
+}
+
+.navigation-menubar {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: var(--white);
+    top: 100%;
+    left: 0;
+    height: 100vh;
+    transform: translate(-100%);
+}
+
+.navigation-menubar li {
+    border-bottom: 0.063rem solid #f0f0f0;
+}
+
+.menubar-link {
+    color: var(--black);
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.875rem 1.25rem;
+    text-transform: uppercase;
+}
+.menubar-link {
+    display: inline-flex;
+    overflow-wrap: break-word;
+}
+
+.menubar-link:hover {
+    color: var(--shade-red);
+}
+
+.navigation-authentication {
+    order: 3;
+}
+
+.sign-buttons {
+    display: none;
+}
+
+.sign-buttons button a {
+    font-size: 0.813rem;
+    font-weight: 700;
+    color: var(--shade-black);
+    text-transform: uppercase;
+    padding: 1.25rem;
+}
+
+.sign-user svg {
+    width: 1.25rem;
+    display: block;
+    cursor: pointer;
+}
+
+.navigation-collapse {
+    order: 1;
+}
+
+.navigation-toggler {
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    background: none;
+    align-items: center;
+    position: relative;
+}
+
+.open {
+    transform: translate(0%);
+}
+
+@media (min-width: 80rem) {
+    .navigation-container {
+        padding: 0;
+    }
+
+    .navigation-logo {
+        order: 1;
+        margin: 0;
+    }
+
+    .navigation-logo span {
+        display: none;
+    }
+
+    .navigation-logo svg {
+        display: block;
+    }
+
+    .navigation-toggler {
+        display: none;
+    }
+
+    .navigation-menubar {
+        display: flex;
+        flex: 0 1 auto;
+        flex-flow: column;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+        background: none;
+        border-right: none;
+        height: initial;
+        position: initial;
+        transform: initial;
+    }
+
+    .navigation-menubar li {
+        border-bottom: none;
+    }
+
+    .menubar-link {
+        font-size: 0.813rem;
+        color: var(--shade-black);
+        padding: 1.25rem;
+    }
+
+    .navigation-authentication {
+        margin-left: auto;
+    }
+
+    .sign-buttons {
+        display: block;
+    }
+    .sign-buttons button {
+        font-size: 1rem;
+        min-width: 5.625rem;
+        padding: 0.625rem 0.313rem;
+        border-radius: 0.313rem;
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+
+    .sign-buttons button a:hover {
+        color: var(--shade-red);
+    }
+
+    .navigation-collapse {
+        display: flex;
+        height: 3.75rem;
+        margin: 0 0 0 1.25rem;
+        order: 2;
+    }
+
+    .sign-user {
+        display: none;
+    }
+}
