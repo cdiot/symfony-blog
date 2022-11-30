@@ -5,6 +5,8 @@ namespace App\DataFixtures;
 use App\Entity\Article;
 use App\Entity\ArticleCategory;
 use App\Entity\Media;
+use App\Entity\Report;
+use App\Entity\ReportCategory;
 use App\Entity\User;
 use DateTime;
 use DateTimeImmutable;
@@ -22,6 +24,8 @@ class AppFixtures extends Fixture
 
     private array $articles  = [];
 
+    private array $reportCategories  = [];
+
     public function __construct(private UserPasswordHasherInterface $passwordHasher)
     {
     }
@@ -32,6 +36,8 @@ class AppFixtures extends Fixture
         $this->loadMedias($manager);
         $this->loadArticleCategories($manager);
         $this->loadArticles($manager);
+        $this->loadReportCategories($manager);
+        $this->loadReports($manager);
     }
 
     private function loadUsers(ObjectManager $manager): void
@@ -99,6 +105,33 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
+    private function loadReportCategories(ObjectManager $manager): void
+    {
+        foreach ($this->getReportCategoryData() as [$name]) {
+            $reportCategory = new ReportCategory();
+            $reportCategory->setName($name);
+            $manager->persist($reportCategory);
+            $this->reportCategories[] = $reportCategory;
+        }
+        $manager->flush();
+    }
+
+    private function loadReports(ObjectManager $manager): void
+    {
+        foreach ($this->getReportData() as [$email, $content, $article, $category, $createdAt, $updatedAt]) {
+            $report = new Report();
+            $report->setEmail($email);
+            $report->setContent($content);
+            $report->setCreatedAt($createdAt);
+            $report->setUpdatedAt($updatedAt);
+            $report->setArticle($this->articles[$article]);
+            $report->setCategory($this->reportCategories[$category]);
+            $report->setIsClose(false);
+            $manager->persist($report);
+        }
+        $manager->flush();
+    }
+
     private function getUserData(): array
     {
         return [
@@ -146,6 +179,24 @@ class AppFixtures extends Fixture
                 0,
                 0,
             ],
+        ];
+    }
+
+    private function getReportCategoryData(): array
+    {
+        return [
+            // $reportCategoryData = [$name];
+            ['L\'image ne s\'affiche pas'],
+            ['Orthographe'],
+            ['Autre (précisé)'],
+        ];
+    }
+
+    private function getReportData(): array
+    {
+        return [
+            // $reportData = [$email, $content, $article, $category, $createdAt, $updatedAt];
+            ['foo@gmail.com', 'Ce article est incomplet.', 0, 1, new DateTimeImmutable(), new DateTime()],
         ];
     }
 }
