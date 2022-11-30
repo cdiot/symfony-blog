@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+	<title>Me contacter - ryokosan.com, Blog voyage d'un digital nomad</title>
+	<link rel="canonical" href="https://www.ryokosan.com{{ path('contact') }}">
+	<meta name="description" content="Si t'as une question particulière ou un partenariat à me proposer, tu peux utiliser mon formulaire de contact."/>
+	<meta property="og:title" content="Me contacter - ryokosan.com, Blog voyage d'un digital nomad"/>
+	<meta property="og:url" content="https://www.ryokosan.com{{ path('contact') }}">
+	<meta property="og:site_name" content="Ryokosan">
+	<meta property="og:type" content="siteweb"/>
+	<meta property="og:description" content="Si t'as une question particulière ou un partenariat à me proposer, tu peux utiliser mon formulaire de contact."/>
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<div class="row">
+			<div class="column-twelve column-desktop-four">
+				<h1 class="headline">Me contacter</h1>
+				<p class="lead text-align-center">Si t'as une question particulière
+					à me poser ou un partenariat à proposé, 
+					tu peux utiliser le formulaire ci-dessous.</p>
+				{% for message in app.flashes('notice') %}
+					<div class="alert">{{message}}</div>
+				{% endfor %}
+				{{ form_start(contactForm) }}
+				<div class="form-group">
+					{{ form_row(contactForm.email) }}
+				</div>
+				<div class="form-group">
+					{{ form_row(contactForm.subject) }}
+				</div>
+				<div class="form-group">
+					{{ form_row(contactForm.content) }}
+				</div>
+				<button class="button button-action form-group" type="submit">
+					Envoyer
+				</button>
+				{{ form_end(contactForm) }}
+			</div>
+		</div>
+	</section>
+{% endblock %}
