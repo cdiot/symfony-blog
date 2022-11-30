@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Article;
 use App\Entity\ArticleCategory;
 use App\Entity\Media;
+use App\Entity\ReportCategory;
 use App\Entity\User;
 use DateTime;
 use DateTimeImmutable;
@@ -22,6 +23,8 @@ class AppFixtures extends Fixture
 
     private array $articles  = [];
 
+    private array $reportCategories  = [];
+
     public function __construct(private UserPasswordHasherInterface $passwordHasher)
     {
     }
@@ -32,6 +35,7 @@ class AppFixtures extends Fixture
         $this->loadMedias($manager);
         $this->loadArticleCategories($manager);
         $this->loadArticles($manager);
+        $this->loadReportCategories($manager);
     }
 
     private function loadUsers(ObjectManager $manager): void
@@ -99,6 +103,17 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
+    private function loadReportCategories(ObjectManager $manager): void
+    {
+        foreach ($this->getReportCategoryData() as [$name]) {
+            $reportCategory = new ReportCategory();
+            $reportCategory->setName($name);
+            $manager->persist($reportCategory);
+            $this->reportCategories[] = $reportCategory;
+        }
+        $manager->flush();
+    }
+
     private function getUserData(): array
     {
         return [
@@ -146,6 +161,15 @@ class AppFixtures extends Fixture
                 0,
                 0,
             ],
+        ];
+    }
+
+    private function getReportCategoryData(): array
+    {
+        return [
+            // $reportCategoryData = [$name];
+            ['Faute d\'orthographe'],
+            ['Autre (précisé)'],
         ];
     }
 }
