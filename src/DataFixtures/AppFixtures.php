@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Article;
 use App\Entity\ArticleCategory;
 use App\Entity\Media;
+use App\Entity\Report;
 use App\Entity\ReportCategory;
 use App\Entity\User;
 use DateTime;
@@ -36,6 +37,7 @@ class AppFixtures extends Fixture
         $this->loadArticleCategories($manager);
         $this->loadArticles($manager);
         $this->loadReportCategories($manager);
+        $this->loadReports($manager);
     }
 
     private function loadUsers(ObjectManager $manager): void
@@ -114,6 +116,22 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
+    private function loadReports(ObjectManager $manager): void
+    {
+        foreach ($this->getReportData() as [$email, $content, $article, $category, $createdAt, $updatedAt]) {
+            $report = new Report();
+            $report->setEmail($email);
+            $report->setContent($content);
+            $report->setCreatedAt($createdAt);
+            $report->setUpdatedAt($updatedAt);
+            $report->setArticle($this->articles[$article]);
+            $report->setCategory($this->reportCategories[$category]);
+            $report->setIsClose(false);
+            $manager->persist($report);
+        }
+        $manager->flush();
+    }
+
     private function getUserData(): array
     {
         return [
@@ -168,8 +186,17 @@ class AppFixtures extends Fixture
     {
         return [
             // $reportCategoryData = [$name];
-            ['Faute d\'orthographe'],
+            ['L\'image ne s\'affiche pas'],
+            ['Orthographe'],
             ['Autre (précisé)'],
+        ];
+    }
+
+    private function getReportData(): array
+    {
+        return [
+            // $reportData = [$email, $content, $article, $category, $createdAt, $updatedAt];
+            ['foo@gmail.com', 'Ce article est incomplet.', 0, 1, new DateTimeImmutable(), new DateTime()],
         ];
     }
 }
