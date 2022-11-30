@@ -2,6 +2,8 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Article;
+use App\Entity\ArticleCategory;
 use App\Entity\User;
 use App\Repository\ArticleRepository;
 use App\Repository\ReportRepository;
@@ -45,6 +47,11 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Comptes', 'fas fa-user')->setSubItems([
             MenuItem::linkToCrud('Tous les comptes', 'fas fa-user-friends', User::class),
             MenuItem::linkToCrud('Ajouter', 'fas fa-plus', User::class)->setAction(Crud::PAGE_NEW)
+        ]);
+        yield MenuItem::subMenu('Articles', 'fas fa-newspaper')->setSubItems([
+            MenuItem::linkToCrud('Tous les articles', 'fas fa-newspaper', Article::class),
+            MenuItem::linkToCrud('Ajouter', 'fas fa-plus', Article::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Catégories des articles', 'fas fa-list', ArticleCategory::class)
         ]);
     }
 }
