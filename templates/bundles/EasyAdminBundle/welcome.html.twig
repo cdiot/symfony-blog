@@ -1,0 +1,58 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title %}
+	Tableau de bord
+{% endblock %}
+
+{% block main %}
+	<section class="container">
+		<div class="row">
+			<div class="col-6 alert alert-info">
+				<span class="display-5">Un total de
+					{{ countAllArticle['value'] }}
+					<strong>article(s)</strong>
+					publié</span>
+			</div>
+			<div class="col-6 alert alert-success">
+				<span class="display-5">Déjà
+					{{ countAllUser['value'] }}
+					<strong>utilisateur(s)</strong>
+					inscrit</span>
+			</div>
+			<div class="row mt-3">
+				<div class="col-12">
+					<P class="h3">Les rapports en cours</p>
+					{% for report in reportsInProgress %}
+						{% if report.isClose == false %}
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">Email</th>
+										<th scope="col">Objet</th>
+										<th scope="col">Commentaire</th>
+										<th scope="col">Catégorie</th>
+										<th scope="col">Créé le</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row"></th>
+										<td>{{ report.email }}</td>
+										<td>{{ report.article }}</td>
+										<td>{{ report.content }}</td>
+										<td>{{ report.category }}</td>
+										<td>{{ report.createdAt|date|date('d M Y') }}</td>
+									</tr>
+								</tbody>
+							</table>
+						{% endif %}
+					{% else %}
+						<p>Aucun rapport en cours.</p>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
