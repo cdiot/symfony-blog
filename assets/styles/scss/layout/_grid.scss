@@ -22,10 +22,24 @@ Tags : CSS ;
     width: 100%;
 }
 
+@media (min-width: 48rem) {
+    .column-tablet-six {
+        width: 50%;
+    }
+    .column-tablet-four {
+        width: 33.3333333333%;
+    }
+}
+
 @media (min-width: 80rem) {
     .column-desktop-eight {
         width: 66.6666666667%;
     }
+
+    .column-desktop-six {
+        width: 50%;
+    }
+
     .column-desktop-four {
         width: 33.3333333333%;
     }

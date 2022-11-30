@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+	<title>
+		ryokosan.com, Blog voyage d'un digital nomad en Thaïlande et en Corée du sud
+	</title>
+	<meta property="og:description" content="Ryokosan est un site dédié à mes coups de cœur, imprévus, déceptions et bons plans lors de mes voyages.">
+	<link rel="canonical" href="https://www.ryokosan.com">
+	<meta property="og:title" content="ryokosan.com, Blog voyage d'un digital nomad en Thaïlande et en Corée du sud"/>
+	<meta property="og:url" content="https://www.ryokosan.com">
+	<meta property="og:site_name" content="Ryokosan">
+	<meta property="og:type" content="siteweb"/>
+	<meta property="og:description" content="Ryokosan est un site dédié à mes coups de cœur, imprévus, déceptions et bons plans lors de mes voyages."/>
+{% endblock %}
+
+{% block body %}
+	<section>
+		<div class="herobanner-container" id="hero-banner">
+			<img class="herobanner-featured-image" src="{{ asset('build/images/seoul_door_in_night.jpg') }}" alt="Séoul vue de nuit" loading="lazy"/>
+			<div class="herobanner-content">
+				<span class="post-tags">
+					<a href="{{ path('article_category_show', { 'slug': 'thailande' }) }}" title="Thailande">Thailande</a>
+					<a href="{{ path('article_category_show', { 'slug': 'coree-du-sud' }) }}" title="Corée du sud">Corée du sud</a>
+				</span>
+				<h1 class="herobanner-headline">Blog Voyage d'un digital nomad saison 1 : Bangkok et Séoul !</h1>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="column-twelve">
+					<h2 class="headline">Ryokosan en trois points</h2>
+				</div>
+				<div class="column-twelve column-tablet-four column-desktop-four">
+					<div class="feature">
+						<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" viewbox="0 0 16 16">
+							<path fill-rule="evenodd" d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98 4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z"/>
+						</svg>
+						<br><br>
+						<p>Mes coups de cœur, imprévus et bon plans</p>
+					</div>
+				</div>
+				<div class="column-twelve column-tablet-four column-desktop-four">
+					<div class="feature">
+						<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" viewbox="0 0 16 16">
+							<path fill-rule="evenodd" d="M0 .5A.5.5 0 0 1 .5 0h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 0 .5Zm0 2A.5.5 0 0 1 .5 2h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm9 0a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5Zm-9 2A.5.5 0 0 1 .5 4h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Zm5 0a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5Zm7 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Zm-12 2A.5.5 0 0 1 .5 6h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5Zm8 0a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5Zm-8 2A.5.5 0 0 1 .5 8h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5Zm7 0a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm-7 2a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5Zm0 2a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5Zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Z"/>
+						</svg>
+						<br><br>
+						<p>Au moins 1 nouvel article tous les mercredi</p>
+					</div>
+				</div>
+				<div class="column-twelve column-tablet-four column-desktop-four">
+					<div class="feature">
+						<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" viewbox="0 0 16 16">
+							<path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+							<path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+							<path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+						</svg>
+						<br><br>
+						<p>Un voyageur respectueux des populations locals !</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="column-twelve column-tablet-six column-desktop-six">
+					<div id="populararticles">
+						<h3 class="heading">Articles populaires</h3>
+						<ol>
+							{% for key, article in popularArticles %}
+								<li>{{ key+1 }}
+									.
+									<a href="{{ path('article_show', { 'slug': article.slug }) }}" title="{{ article.title }}">{{ article.title }}</a>
+								</li>
+							{% else %}
+								<p>Aucun article populaires disponible pour le moment.</p>
+							{% endfor %}
+						</ol>
+					</div>
+				</div>
+				<div class="column-twelve column-tablet-six column-desktop-six">
+					<div id="somewords">
+						<h3 class="heading">Quelques mots</h3>
+						<p>Sur Ryokosan, retrouvez chaque année une nouvelle saison de voyage 
+							avec de nouveaux endroits (Thaïlande, Corée du Sud, etc...), 
+							accompagné mes coups de cœur, imprévus, déceptions et bons plans
+							qui pourrons vous aidez dans vos futurs voyages en se basant sur 
+							mes aventures vécues. En me lisant et laissent un commentaire, 
+							vous participez également au développement de ce blog et je vous
+							en remercie chaleureusement.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="container">
+		<div class="row">
+			<div class="column-twelve">
+				<h2 class="headline">
+					Les articles récents
+				</h2>
+				<p class="lead">Les six derniers articles publiés</p>
+				<br><br>
+			</div>
+
+			{% for article in lastArticles %}
+				<div class="column-twelve column-tablet-four column-desktop-four">
+					<article class="post">
+						<a href="{{ path('article_show', { 'slug': article.slug }) }}">
+							<img class="card-image-top" src="/build/images/{{ article.featuredImage.filename }}" alt="{{ article.featuredImage.altText }}" loading="lazy" width="390" height="186"/>
+						</a>
+						<div class="post-content">
+							<span class="post-tags">{{ article.categories|categoriesToString|raw }}</span>
+							<h3 class="post-title">
+								<a href="{{ path('article_show', { 'slug': article.slug }) }}">
+									{{ article.title }}
+								</a>
+							</h3>
+							<p class="post-meta">Par
+								{{ article.user.username }}
+								le
+								{{ article.createdAt|date('d M Y') }}
+							</p>
+							<p>{{ article.leadText }}</p>
+						</div>
+					</article>
+				</div>
+			{% else %}
+				<p>Aucun article récent disponible pour le moment.</p>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}

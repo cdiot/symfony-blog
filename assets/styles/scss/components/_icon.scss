@@ -4,3 +4,12 @@ Theme : Pure CSS ;
 Description : Icon ;
 Tags : CSS ;
 */
+
+.icon-svg {
+    fill: var(--black);
+}
+
+.icon-svg:hover,
+.icon-svg:active {
+    fill: var(--shade-red);
+}

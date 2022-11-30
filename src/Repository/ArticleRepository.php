@@ -41,32 +41,29 @@ class ArticleRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return Article[] Returns an array of Article objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Retrieve five last articles
+     */
+    public function findLast(): array
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+            ->orderBy('a.createdAt', 'DESC')
+            ->setMaxResults(6)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Article
+    /**
+     * Retrieve popular articles
+     */
+    public function findPopular(): array
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('a.isPopular = :isPopular')
+            ->setParameter('isPopular', true)
+            ->orderBy('a.createdAt', 'DESC')
+            ->setMaxResults(5)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();
     }
-    */
 }

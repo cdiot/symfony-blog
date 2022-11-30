@@ -4,10 +4,10 @@
 	<title>Catégorie
 		{{ category.name }}
 		sur ryokosan.com, Blog voyage d'un digital nomad</title>
-	<link rel="canonical" href="https://www.ryokosan.com{{ path('article_list') }}">
+	<link rel="canonical" href="https://www.ryokosan.com{{ path('article_category_show', { 'slug': category.slug }) }}">
 	<meta name="description" content="Découvrez mes coups de cœur, mes bons plans, mes imprévus et mes déceptions lors de mes voyage à travers mes articles."/>
 	<meta property="og:title" content="Toutes les articles sur ryokosan.com, Blog voyage d'un digital nomad"/>
-	<meta property="og:url" content="https://www.ryokosan.com{{ path('article_list') }}">
+	<meta property="og:url" content="https://www.ryokosan.com{{ path('article_category_show', { 'slug': category.slug }) }}">
 	<meta property="og:site_name" content="Ryokosan">
 	<meta property="og:type" content="siteweb"/>
 	<meta property="og:description" content="Découvrez mes coups de cœur, mes bons plans, mes imprévus et mes déceptions lors de mes voyage à travers mes articles."/>

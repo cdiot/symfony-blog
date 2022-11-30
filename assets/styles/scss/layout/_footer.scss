@@ -1,0 +1,56 @@
+/*
+Author : Chris ;
+Theme : Pure CSS ;
+Description :  Footer ;
+Tags : CSS ;
+*/
+
+#footer {
+    padding: 2.5rem 0;
+    background-color: var(--white);
+}
+
+#footer .social {
+    text-align: center;
+    padding-bottom: 0.938rem;
+}
+
+#footer .list {
+    padding-bottom: 0.938rem;
+}
+
+#footer .social a {
+    text-align: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 3rem;
+    display: inline-block;
+    text-align: center;
+    margin: 0 0.5rem;
+}
+
+#footer ul {
+    margin-top: 0;
+    padding: 0;
+    line-height: 1.25;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+#footer ul li a {
+    color: var(--black);
+}
+
+#footer ul li a:hover {
+    color: var(--shade-red);
+}
+
+#footer ul li {
+    display: inline-block;
+    padding: 0 0.938rem;
+}
+
+#footer .copyright {
+    text-align: center;
+    color: inherit;
+}

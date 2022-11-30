@@ -1,0 +1,42 @@
+/*
+Author : Chris ;
+Theme : Pure CSS ;
+Description : Home page ;
+Tags : CSS ;
+*/
+
+.feature {
+    text-align: center;
+    margin-top: 1.875rem;
+}
+
+#populararticles .heading,
+#somewords .heading {
+    margin-top: 1.563rem;
+    margin-bottom: 1.875rem;
+}
+
+#populararticles ol {
+    font-size: 1.125rem;
+    color: var(--shade-red);
+}
+
+#populararticles li {
+    margin-bottom: 0.75rem;
+}
+
+#populararticles li a {
+    color: var(--black);
+    font-size: 1.125rem;
+}
+
+#populararticles li a:hover {
+    color: var(--shade-red);
+}
+
+@media only screen and (min-width: 768px) {
+    #populararticles,
+    #somewords {
+        margin-left: 3.125rem;
+    }
+}
