@@ -42,6 +42,25 @@
 						</div>
 					</div>
 				</article>
+				<div class="column-twelve">
+					<h2 class="heading">
+						<span class="comment-count">{{ article.comments|length }}</span>
+						Commentaire(s)</h2>
+					<br>
+					<div class="comment-list form-group" id="comments">
+						{% for comment in article.comments %}
+							{% include 'comment/_index.html.twig' with [comment] %}
+						{% endfor %}
+					</div>
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						{% include 'comment/_form_add.html.twig' %}
+					{% else %}
+						<p class="alert">
+							Tu peux laisser un commentaire et donné ton avis sur un article, mais
+							pour ça il faut que tu sois connecté.
+						</p>
+					{% endif %}
+				</div>
 			</div>
 		</div>
 	</section>

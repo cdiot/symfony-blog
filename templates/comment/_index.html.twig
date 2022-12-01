@@ -1,0 +1,12 @@
+{% set username = comment.user.username %}
+<div class="comment form-group" id="c{{ comment.id }}">
+	<div>
+		<div class="comment-content">
+			<h3>
+				{{ username }}
+				{{ comment.createdAt|date('d M Y à H:i:s') }}
+			</h3>
+			<p>{{ comment.content }}</p>
+		</div>
+	</div>
+</div>
