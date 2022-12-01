@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Article;
 use App\Entity\ArticleCategory;
+use App\Entity\Comment;
 use App\Entity\Media;
 use App\Entity\Report;
 use App\Entity\ReportCategory;
@@ -38,6 +39,7 @@ class AppFixtures extends Fixture
         $this->loadArticles($manager);
         $this->loadReportCategories($manager);
         $this->loadReports($manager);
+        $this->loadComments($manager);
     }
 
     private function loadUsers(ObjectManager $manager): void
@@ -132,11 +134,27 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
+    private function loadComments(ObjectManager $manager): void
+    {
+        foreach ($this->getCommentData() as [$user, $article, $createdAt, $updatedAt, $content]) {
+            $comment = new Comment();
+            $comment->setUser($this->users[$user]);
+            $comment->setArticle($this->articles[$article]);
+            $comment->setCreatedAt($createdAt);
+            $comment->setUpdatedAt($updatedAt);
+            $comment->setContent($content);
+            $manager->persist($comment);
+        }
+        $manager->flush();
+    }
+
     private function getUserData(): array
     {
         return [
             // $userData = [$password, $email, $roles, $username];
             ['123456', 'fry@gmail.com', 'ROLE_ADMIN', 'Fry'],
+            ['123456', 'foo@gmail.com', 'ROLE_USER', 'Foo'],
+            ['123456', 'bar@gmail.com', 'ROLE_USER', 'Bar'],
         ];
     }
 
@@ -197,6 +215,16 @@ class AppFixtures extends Fixture
         return [
             // $reportData = [$email, $content, $article, $category, $createdAt, $updatedAt];
             ['foo@gmail.com', 'Ce article est incomplet.', 0, 1, new DateTimeImmutable(), new DateTime()],
+        ];
+    }
+
+    private function getCommentData(): array
+    {
+        return [
+            // $commentData = [$user, $article, $createdAt, $updatedAt, $content];
+            [0, 0, new DateTimeImmutable(), new DateTime(), 'Super article!'],
+            [1, 0, new DateTimeImmutable(), new DateTime(), 'Génial!'],
+            [0, 0, new DateTimeImmutable(), new DateTime(), 'Je vous remercie!'],
         ];
     }
 }
