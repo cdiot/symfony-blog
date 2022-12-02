@@ -152,7 +152,7 @@ class AppFixtures extends Fixture
     {
         return [
             // $userData = [$password, $email, $roles, $username];
-            ['123456', 'fry@gmail.com', 'ROLE_ADMIN', 'Fry'],
+            ['123456', 'foobar@gmail.com', 'ROLE_ADMIN', 'Foobar'],
             ['123456', 'foo@gmail.com', 'ROLE_USER', 'Foo'],
             ['123456', 'bar@gmail.com', 'ROLE_USER', 'Bar'],
         ];
@@ -176,9 +176,9 @@ class AppFixtures extends Fixture
     {
         return [
             // $articleCategoryData = [$name, $slug];
-            ['Japon', 'japon'],
             ['Thailande', 'thailande'],
             ['Corée du sud', 'coree-du-sud'],
+            ['Hors série', 'hors-serie'],
         ];
     }
 
@@ -190,12 +190,78 @@ class AppFixtures extends Fixture
                 0,
                 new DateTimeImmutable(),
                 new DateTime(),
-                'Mon super premier article',
-                'mon-super-premier-article',
-                'Le texte mise en avant de mon super premier article.',
-                'La description très détaille de mon super premier article.',
+                'Bonjour le monde!',
+                'bonjour-le-monde',
+                'Bienvenue sur SymfonyCMSBlog. Ceci est votre premier poste.',
+                'La description de votre premier poste sur SymfonyCMSBlog.',
+                0,
+                1,
+            ],
+            [
+                0,
+                new DateTimeImmutable(),
+                new DateTime(),
+                'Votre deuxième poste',
+                'votre-deuxieme-poste',
+                'Le texte mise en avant de votre deuxième poste.',
+                'La description de votre deuxième poste sur SymfonyCMSBlog.',
+                0,
+                2,
+            ],
+            [
+                0,
+                new DateTimeImmutable(),
+                new DateTime(),
+                'Votre troisième poste',
+                'votre-troisieme-poste',
+                'Le texte mise en avant de votre troisième poste.',
+                'La description de votre troisième poste sur SymfonyCMSBlog.',
                 0,
                 0,
+            ],
+            [
+                0,
+                new DateTimeImmutable(),
+                new DateTime(),
+                'Votre quatrième poste',
+                'votre-quatrieme-poste',
+                'Le texte mise en avant de votre quatrième poste.',
+                'La description de votre quatrième poste sur SymfonyCMSBlog.',
+                0,
+                1,
+            ],
+            [
+                0,
+                new DateTimeImmutable(),
+                new DateTime(),
+                'Votre cinquième poste',
+                'votre-cinquieme-poste',
+                'Le texte mise en avant de votre cinquième poste.',
+                'La description de votre cinquième poste sur SymfonyCMSBlog.',
+                0,
+                1,
+            ],
+            [
+                0,
+                new DateTimeImmutable(),
+                new DateTime(),
+                'Votre sixième poste',
+                'votre-sixieme-poste',
+                'Le texte mise en avant de votre sixième poste.',
+                'La description de votre sixième poste sur SymfonyCMSBlog.',
+                0,
+                2,
+            ],
+            [
+                0,
+                new DateTimeImmutable(),
+                new DateTime(),
+                'Votre septième poste',
+                'votre-septieme-poste',
+                'Le texte mise en avant de votre septième poste.',
+                'La description de votre septième poste sur SymfonyCMSBlog.',
+                0,
+                2,
             ],
         ];
     }
@@ -204,8 +270,7 @@ class AppFixtures extends Fixture
     {
         return [
             // $reportCategoryData = [$name];
-            ['L\'image ne s\'affiche pas'],
-            ['Orthographe'],
+            ['Lien mort'],
             ['Autre (précisé)'],
         ];
     }
@@ -214,7 +279,7 @@ class AppFixtures extends Fixture
     {
         return [
             // $reportData = [$email, $content, $article, $category, $createdAt, $updatedAt];
-            ['foo@gmail.com', 'Ce article est incomplet.', 0, 1, new DateTimeImmutable(), new DateTime()],
+            ['foo@gmail.com', 'Hi, This is a report.', 0, 1, new DateTimeImmutable(), new DateTime()],
         ];
     }
 
@@ -222,9 +287,7 @@ class AppFixtures extends Fixture
     {
         return [
             // $commentData = [$user, $article, $createdAt, $updatedAt, $content];
-            [0, 0, new DateTimeImmutable(), new DateTime(), 'Super article!'],
-            [1, 0, new DateTimeImmutable(), new DateTime(), 'Génial!'],
-            [0, 0, new DateTimeImmutable(), new DateTime(), 'Je vous remercie!'],
+            [1, 0, new DateTimeImmutable(), new DateTime(), 'Bonjour, ceci est un commentaire.'],
         ];
     }
 }
