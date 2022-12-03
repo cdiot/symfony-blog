@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Form\Type\WelcomeFormType;
 use App\Repository\ArticleRepository;
 use App\Repository\OptionRepository;
+use App\Service\Database;
 use App\Service\Welcome;
 use DateTime;
 use DateTimeImmutable;
@@ -33,7 +34,8 @@ class HomeController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManager,
         UserPasswordHasherInterface $passwordHasher,
-        OptionRepository $optionRepository
+        OptionRepository $optionRepository,
+        Database $database
     ): Response {
         if ($optionRepository->getValue(Welcome::SITE_INSTALLED_NAME)) {
             return $this->redirectToRoute('home');
@@ -44,6 +46,9 @@ class HomeController extends AbstractController
         $welcomeForm->handleRequest($request);
 
         if ($welcomeForm->isSubmitted() && $welcomeForm->isValid()) {
+
+            $database->createDataFixtures();
+
             /** @var Welcome $data */
             $data = $welcomeForm->getData();
 
