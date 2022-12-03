@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Bienvenue</title>
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="column-twelve">
+					<div class="post">
+						<div class="post-content">
+							<h1 class="post-title">Bienvenue sur SymfonyCMSBlog</h1>
+							<br>
+							<p>Avant de nous lancer, nous allons avoir besoin de réunir les informations suivantes pour continuer :</p>
+							<ul>
+								<ul>1. Nom de l'administrateur</ul>
+								<ul>2. Email de l'administrateur</ul>
+								<ul>3. Mot de passe de l'administrateur</ul>
+							</ul>
+							<br>
+							<h2 class="post-title">Informations nécessaires</h2>
+							<br>
+							{{ form(form) }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</body>
+	</body>
+</html>
