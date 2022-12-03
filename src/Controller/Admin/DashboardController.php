@@ -10,6 +10,7 @@ use App\Entity\Report;
 use App\Entity\ReportCategory;
 use App\Entity\User;
 use App\Repository\ArticleRepository;
+use App\Repository\CommentRepository;
 use App\Repository\ReportRepository;
 use App\Repository\UserRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -24,6 +25,7 @@ class DashboardController extends AbstractDashboardController
     public function __construct(
         protected ArticleRepository $articleRepository,
         protected UserRepository $userRepository,
+        protected CommentRepository $commentRepository,
         protected ReportRepository $reportRepository
     ) {
     }
@@ -34,6 +36,7 @@ class DashboardController extends AbstractDashboardController
         return $this->render('bundles/EasyAdminBundle/welcome.html.twig', [
             'countAllArticle' => $this->articleRepository->countByAllArticle(),
             'countAllUser' => $this->userRepository->countAllUser(),
+            'lastComments' => $this->commentRepository->findLast(),
             'reportsInProgress' => $this->reportRepository->findAll(),
         ]);
     }
