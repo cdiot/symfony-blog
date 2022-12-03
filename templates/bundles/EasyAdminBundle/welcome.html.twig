@@ -22,6 +22,36 @@
 			</div>
 			<div class="row mt-3">
 				<div class="col-12">
+					<P class="h3">Les commentaires récents</p>
+					{% for comment in lastComments %}
+
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Autheur</th>
+									<th scope="col">Sujet</th>
+									<th scope="col">Commentaire</th>
+									<th scope="col">Créé le</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row"></th>
+									<td>{{ comment.user }}</td>
+									<td>{{ comment.article }}</td>
+									<td>{{ comment.content }}</td>
+									<td>{{ comment.createdAt|date() }}</td>
+								</tr>
+							</tbody>
+						</table>
+					{% else %}
+						<p>Aucun commentaire en récent.</p>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="row mt-3">
+				<div class="col-12">
 					<P class="h3">Les rapports en cours</p>
 					{% for report in reportsInProgress %}
 						{% if report.isClose == false %}

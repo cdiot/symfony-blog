@@ -5,6 +5,8 @@ namespace App\Controller\Admin;
 use App\Entity\Media;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -21,9 +23,20 @@ class MediaCrudController extends AbstractCrudController
         return Media::class;
     }
 
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->remove(Crud::PAGE_INDEX, Action::NEW);
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud->setPageTitle(Crud::PAGE_INDEX, 'Médiathèque');
+    }
+
     public function configureFields(string $pageName): iterable
     {
-        yield TextField::new('name', 'Nom');
+        yield TextField::new('name', 'Nom du fichier');
 
         $imageField = ImageField::new('filename', 'Média')
             ->setBasePath('build/images/')
