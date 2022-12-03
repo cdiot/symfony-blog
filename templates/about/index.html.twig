@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+	<title>À propos - ryokosan.com, Blog voyage d'un digital nomad</title>
+	<link rel="canonical" href="https://www.ryokosan.com{{ path('contact') }}">
+	<meta name="description" content="Si t'as en apprendre plus sur Ryokosan ou sur moi, tu te trouve sur la bonne page."/>
+	<meta property="og:title" content="À propos - ryokosan.com, Blog voyage d'un digital nomad"/>
+	<meta property="og:url" content="https://www.ryokosan.com{{ path('contact') }}">
+	<meta property="og:site_name" content="Ryokosan">
+	<meta property="og:type" content="siteweb"/>
+	<meta property="og:description" content="Si t'as en apprendre plus sur Ryokosan ou sur moi, tu te trouve sur la bonne page."/>
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<div class="row">
+			<div class="column-twelve column-desktop-six">
+				<h1 class="headline">
+					À propos de Ryokosan
+				</h1>
+				<p class="lead">Ryokosan est un blog où chaque année est une nouvelle saison de destinations.</p>
+				<h2 class="heading">Qu'est-ce que Ryokosan ?</h2>
+				<br>
+				<p>À l'origine, Ryokosan devait être un réseau social européen pour rencontrer d'autres voyageurs. Alimenté chaque année par une nouvelle saison de contenu dans différentes destinations. C'est durant le tournage de la première saison en Corée du Sud et Thaïlande où j'ai vécu tout un tas d'aventures que le projet c'est transformé pour devenir un site où je partage avec vous mes conseils, mes bons plans et mes avis sur les destinations que j'ai visité.</p>
+				<h2 class="heading">Qui suis-je ?</h2>
+				<br>
+				<p>Je gère Ryokosan au quotidien, aussi bien sur les plans éditorial que technique. Je prends toutes les décisions concernant le site et je voyage régulièrement pour pouvoir livrer du contenu de qualité et à jour. Je pense que ce qui me définit le plus est la curiosité. J’aime apprendre, j’aime découvrir, j’aime essayer…</p>
+				<p>Vous pouvez me contacter via le formulaire de contact ou vous inscrire à la newsletter.</p>
+				<p>Pour supporter le site, vous pouvez faire un don via la page prévue ou me suivre sur les réseaux sociaux.</p>
+			</div>
+		</div>
+	</section>
+{% endblock %}
