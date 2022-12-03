@@ -65,5 +65,8 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Tous les comptes', 'fas fa-user-friends', User::class),
             MenuItem::linkToCrud('Ajouter', 'fas fa-plus', User::class)->setAction(Crud::PAGE_NEW)
         ]);
+        yield MenuItem::subMenu('Réglages', 'fas fa-cog')->setSubItems([
+            MenuItem::linkToCrud('Général', 'fas fa-cog', Option::class),
+        ]);
     }
 }
