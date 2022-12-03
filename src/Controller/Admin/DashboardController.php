@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Article;
 use App\Entity\ArticleCategory;
 use App\Entity\Media;
+use App\Entity\Option;
 use App\Entity\Report;
 use App\Entity\ReportCategory;
 use App\Entity\User;
@@ -47,14 +48,10 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToRoute('Retour au site', 'fas fa-undo', 'home');
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
-        yield MenuItem::subMenu('Comptes', 'fas fa-user')->setSubItems([
-            MenuItem::linkToCrud('Tous les comptes', 'fas fa-user-friends', User::class),
-            MenuItem::linkToCrud('Ajouter', 'fas fa-plus', User::class)->setAction(Crud::PAGE_NEW)
-        ]);
         yield MenuItem::subMenu('Articles', 'fas fa-newspaper')->setSubItems([
             MenuItem::linkToCrud('Tous les articles', 'fas fa-newspaper', Article::class),
             MenuItem::linkToCrud('Ajouter', 'fas fa-plus', Article::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Catégories des articles', 'fas fa-list', ArticleCategory::class)
+            MenuItem::linkToCrud('Catégories', 'fas fa-list', ArticleCategory::class)
         ]);
         yield MenuItem::subMenu('Médias', 'fas fa-photo-video')->setSubItems([
             MenuItem::linkToCrud('Médiathèque', 'fas fa-photo-video', Media::class),
@@ -63,6 +60,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Rapports', 'fas fa-file')->setSubItems([
             MenuItem::linkToCrud('Tous les rapports', 'fas fa-file', Report::class),
             MenuItem::linkToCrud('Catégories des rapports', 'fas fa-list', ReportCategory::class)
+        ]);
+        yield MenuItem::subMenu('Comptes', 'fas fa-user')->setSubItems([
+            MenuItem::linkToCrud('Tous les comptes', 'fas fa-user-friends', User::class),
+            MenuItem::linkToCrud('Ajouter', 'fas fa-plus', User::class)->setAction(Crud::PAGE_NEW)
         ]);
     }
 }

@@ -18,7 +18,7 @@ class ArticleCategoryCrudController extends AbstractCrudController
 
     public function configureCrud(Crud $crud): Crud
     {
-        return $crud->setPageTitle(Crud::PAGE_INDEX, 'Catégories des artilces');
+        return $crud->setPageTitle(Crud::PAGE_INDEX, 'Catégories');
     }
 
     public function configureFields(string $pageName): iterable
